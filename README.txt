@@ -1,4 +1,4 @@
-JUSTYOU FITNESS TIMER v6.1.1
+JUSTYOU FITNESS TIMER v6.1.2
 
 Změny:
 - obrovské logo jako vodoznak (90 % šířky, průhlednost 4 %)
