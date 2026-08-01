@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1, user-scalable=no">
+  <meta name="theme-color" content="#020304">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="JustYou Timer">
+  <title>JustYou Fitness Timer</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="logo.png">
+  <link rel="stylesheet" href="style.css?v=5.1.0">
+</head>
+<body>
+  <div id="app" class="app">
+    <div class="ambient ambient-one"></div>
+    <div class="ambient ambient-two"></div>
+
+    <header class="header">
+      <div class="brand-wrap">
+        <img id="logo" class="logo" src="logo.png" alt="JustYou Fitness">
+      </div>
+      <div class="clock-wrap">
+        <div class="clock-caption">AKTUÁLNÍ ČAS</div>
+        <div id="clock" class="clock">--:--</div>
+        <div class="clock-line"></div>
+      </div>
+    </header>
+
+    <main id="main" class="main">
+      <section id="screen-active" class="screen active-screen">
+        <div id="slot-label" class="slot-label">REZERVACE</div>
+        <div id="last-minute" class="last-minute hidden"></div>
+
+        <div class="timer-stage">
+          <div class="timer-glow"></div>
+          <div id="countdown" class="countdown">75:00</div>
+        </div>
+
+        <div class="end-label">
+          <span class="end-word">KONEC</span>
+          <span class="end-separator">•</span>
+          <span id="end-time">--:--</span>
+        </div>
+
+        <div id="warn10" class="warn10 hidden">Rezervace končí za 10 minut</div>
+
+        <div id="exit-box" class="exit-box hidden">
+          <div class="exit-heading">
+            <span class="exit-line"></span>
+            <span class="exit-title">PŘI ODCHODU PROSÍM</span>
+            <span class="exit-line"></span>
+          </div>
+
+          <div class="exit-columns">
+            <div class="exit-column">
+              <div class="exit-icon-circle" aria-hidden="true">
+                <svg viewBox="0 0 64 64"><path d="M15 24v16M21 20v24M43 20v24M49 24v16M21 28h22M21 36h22M9 27v10M55 27v10"/></svg>
+              </div>
+              <div class="exit-primary">OTŘETE STROJE</div>
+            </div>
+
+            <div class="exit-column">
+              <div class="exit-icon-circle" aria-hidden="true">
+                <svg viewBox="0 0 64 64"><path d="M24 46h16M25 52h14M32 8v6M11 29h6M47 29h6M17 14l4 5M47 14l-4 5M32 16c-9 0-16 7-16 16 0 6 3 10 8 14h16c5-4 8-8 8-14 0-9-7-16-16-16z"/></svg>
+              </div>
+              <div class="exit-primary">ZHASNĚTE SVĚTLA</div>
+            </div>
+
+            <div class="exit-column">
+              <div class="exit-icon-circle" aria-hidden="true">
+                <svg viewBox="0 0 64 64"><path d="M17 10h30v44H17zM24 16h17v38H24zM36 33h1"/></svg>
+              </div>
+              <div class="exit-primary">NECHTE OTEVŘENÉ</div>
+              <div class="exit-secondary">DVEŘE DO ŠATNY<br>A KOUPELNY</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="screen-night" class="screen hidden night-screen">
+        <img class="night-logo" src="logo.png" alt="">
+        <div class="night-title">FITNESS ODPOČÍVÁ</div>
+        <div class="night-sub">Otevíráme ve 4:00</div>
+      </section>
+
+      <section id="screen-between" class="screen hidden between-screen">
+        <div class="between-title">DALŠÍ REZERVACE</div>
+        <div class="between-sub">začíná v</div>
+        <div id="next-start" class="between-time">04:00</div>
+        <div id="next-countdown" class="countdown between-countdown">75:00</div>
+      </section>
+    </main>
+
+    <div class="progress-track"><div id="progress" class="progress"></div></div>
+
+    <div id="ended-overlay" class="overlay hidden">
+      <div class="overlay-backdrop"></div>
+      <div class="overlay-content">
+        <img class="overlay-logo" src="logo.png" alt="JustYou">
+        <div class="overlay-kicker">POSLEDNÍ SEKUNDY</div>
+        <div class="overlay-title">REZERVACE KONČÍ</div>
+        <div class="overlay-rule"></div>
+        <div class="overlay-cleanup">
+          <div class="overlay-item">
+            <svg viewBox="0 0 64 64"><path d="M15 24v16M21 20v24M43 20v24M49 24v16M21 28h22M21 36h22M9 27v10M55 27v10"/></svg>
+            <span>OTŘETE STROJE</span>
+          </div>
+          <div class="overlay-item">
+            <svg viewBox="0 0 64 64"><path d="M24 46h16M25 52h14M32 8v6M11 29h6M47 29h6M17 14l4 5M47 14l-4 5M32 16c-9 0-16 7-16 16 0 6 3 10 8 14h16c5-4 8-8 8-14 0-9-7-16-16-16z"/></svg>
+            <span>ZHASNĚTE SVĚTLA</span>
+          </div>
+          <div class="overlay-item">
+            <svg viewBox="0 0 64 64"><path d="M17 10h30v44H17zM24 16h17v38H24zM36 33h1"/></svg>
+            <span>NECHTE OTEVŘENÉ DVEŘE DO ŠATNY A KOUPELNY</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="service-menu" class="service hidden">
+      <div class="service-card">
+        <div class="service-title">SERVISNÍ MENU</div>
+        <div class="diag"><span>Verze</span><strong>5.1.0 Luxury · Android 12</strong></div>
+        <div class="diag"><span>Aktivní slot</span><strong id="diag-slot">—</strong></div>
+        <div class="diag"><span>Zbývající čas</span><strong id="diag-remaining">—</strong></div>
+        <div class="diag"><span>Zvuk</span><strong id="diag-audio">—</strong></div>
+        <div class="diag"><span>Připojení</span><strong id="diag-online">—</strong></div>
+        <div class="diag"><span>Wake Lock</span><strong id="diag-wake">—</strong></div>
+        <div class="diag"><span>Synchronizace času</span><strong id="diag-sync">—</strong></div>
+        <div class="diag"><span>Watchdog</span><strong id="diag-watchdog">—</strong></div>
+
+        <button id="test-sound" class="service-btn">TEST ZVUKU</button>
+        <div class="service-section-title">TEST OBRAZOVKY</div>
+        <div class="test-grid">
+          <button id="test-normal" class="service-btn compact">BĚŽNÁ</button>
+          <button id="test-10" class="service-btn compact">10 MIN</button>
+          <button id="test-5" class="service-btn compact">5 MIN</button>
+          <button id="test-1" class="service-btn compact">1 MIN</button>
+          <button id="test-last10" class="service-btn compact">10 S</button>
+          <button id="test-ended" class="service-btn compact">KONEC</button>
+        </div>
+        <button id="test-night" class="service-btn secondary">NOČNÍ OBRAZOVKA</button>
+        <button id="restart-app" class="service-btn secondary">RESTART APLIKACE</button>
+        <button id="close-service" class="service-btn secondary">ZAVŘÍT</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js?v=5.1.0"></script>
+</body>
+</html>
