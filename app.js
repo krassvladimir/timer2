@@ -14,7 +14,7 @@
   var WEATHER_INTERVAL = 10 * 60 * 1000;
   var WEATHER_RETRY_INTERVAL = 30 * 1000;
   var WEATHER_STALE_AFTER = 15 * 60 * 1000;
-  var WEATHER_URL = 'https://api.open-meteo.com/v1/forecast?latitude=49.1951&longitude=16.6068&current=temperature_2m,weather_code,is_day&timezone=Europe%2FPrague';
+  var WEATHER_URL = 'https://api.open-meteo.com/v1/forecast?latitude=49.2032&longitude=16.5943&current=temperature_2m,weather_code,is_day&timezone=Europe%2FPrague';
 
   var slots = [];
   var i;
