@@ -1,4 +1,4 @@
-JustYou Timer v6.2.4
+JustYou Timer v6.2.4 automat
 
 Změny:
 - zvětšený hlavní odpočet na běžné obrazovce
